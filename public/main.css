@@ -28,6 +28,7 @@ a:focus {
   height: 100vh;
   background: #7386d5;
   color: #fff;
+  position: fixed;
   transition: all 0.3s;
 }
 #sidebar.active {
