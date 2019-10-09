@@ -1,3 +1,5 @@
+let recipes = require("../db/models/recipeModel.js");
+
 exports.ensureAuthentication = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();

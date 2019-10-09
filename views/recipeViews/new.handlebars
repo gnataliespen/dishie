@@ -1,49 +1,7 @@
 <div class="new-rec-form">
   <h1>Post a Recipe:</h1>
   <form action="/recipes" method="post" accept-charset="utf-8">
-    <div class="form-group">
-      <label class="col-form-label" for="title">Title:</label>
-      <input type="text" class="form-control" placeholder='Whats it called?' name="title" required>
-    </div>
-    <div class="form-group">
-      <label class="col-form-label" for="prepTime">Prep Time:</label>
-      <input type="text" class="form-control" placeholder='How long to prep?' name="prepTime" required>
-    </div>
-    <div class="form-group">
-      <label class="col-form-label" for="cookTime">Cook Time:</label>
-      <input type="text" class="form-control" placeholder='How long to cook?' name="cookTime" required>
-    </div>
-    <div class="form-group">
-      <label class="col-form-label" for="totalTime">Total Time:</label>
-      <input type="text" class="form-control" placeholder='How long all together' name="totalTime" required>
-    </div>
-    <div class="form-group">
-      <label class="col-form-label" for="yield">Servings:</label>
-      <input type="text" class="form-control" placeholder='How many servings?' name="yield" required>
-    </div>
-    <div class="form-group form-ing">
-      <label class="col-form-label" for="ingredients">Ingredients:</label>
-      <div class="ing-inputs">
-        <input type="text" class="form-control ing-input my-3" placeholder='First Ingredient' name="ingredients" required>
-      </div>
-      <button type='button' class='btn-primary' onClick='addItem(this.id)' id='ing'>Add Ingredient</button>
-    </div>
-    <div class="form-group form-ins">
-      <label class="col-form-label" for="instructions">Instructions:</label>
-      <div class="inputs-ins">
-        <textarea class="form-control ins-input my-3" placeholder='First Step' name="instructions" rows='3' required></textarea>
-      </div>
-      <button type='button' class='btn-primary' id='ins' onClick='addItem(this.id)'>Add Step</button>
-    </div>
-    <div class="form-group">
-      <label class="col-form-label" for="description">Description:</label>
-      <textarea class="form-control" placeholder='Tell us about it....' name="description" rows='6' required></textarea>
-    </div>
-    <div class="form-group">
-      <label for="img">Image:</label>
-      <input type="text" class="form-control" placeholder='URL' name="img" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+   {{> formPartial}}
   </form>
 </div>
 

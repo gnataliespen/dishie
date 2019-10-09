@@ -109,6 +109,8 @@ a:focus {
 }
 #sidebar ul.components {
   padding: 20px 0px;
+  color: #ffc0d0;
+  background: #fff6f6;
 }
 
 #sidebar ul li a {
@@ -121,8 +123,7 @@ a:focus {
   background: #ffc0d0;
 }
 
-#sidebar ul li.active > a,
-a {
+#sidebar ul li.active > a {
   color: #ffc0d0;
   background: #fff6f6;
 }
@@ -164,6 +165,29 @@ a.article:hover {
 }
 .card-text {
   font-size: 0.9rem;
+}
+.edit-delete {
+  display: flex;
+}
+.del-btn,
+.edit-btn {
+  width: 10rem;
+}
+.del-btn {
+  background-color: black;
+  color: #ffc0d0;
+}
+.edit-btn {
+  background-color: #ffc0d0;
+  color: black;
+}
+.del-btn:hover {
+  color: black;
+  background-color: #ffc0d0;
+}
+.edit-btn:hover {
+  color: #ffc0d0;
+  background-color: black;
 }
 
 @media (max-width: 850px) {

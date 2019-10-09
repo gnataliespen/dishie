@@ -1,0 +1,8 @@
+<div class="new-rec-form">
+  <h1>Edit your Recipe:</h1>
+  <form action="/recipes/{{recipe.id}}?_method=PUT" method='post' accept-charset="utf-8">
+  {{#with recipe}}
+    {{> formPartial}}
+   {{/with}}
+  </form>
+</div>

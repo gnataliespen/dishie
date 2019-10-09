@@ -1,4 +1,5 @@
 const recipes = require("../db/models/recipeModel");
+const users = require("../db/models/userModel");
 
 exports.about = (req, res) => {
   res.send("about");
@@ -10,5 +11,6 @@ exports.home = async (req, res) => {
 };
 
 exports.dash = async (req, res) => {
-  res.render("index/dash");
+  let user = await users.findOne({ _id: req.user.id }).populate("myRecipes");
+  res.render("index/dash", { recipes: user.myRecipes });
 };

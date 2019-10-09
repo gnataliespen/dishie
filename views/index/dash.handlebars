@@ -1,1 +1,34 @@
-<h1>dash</h1>
+<div class="rec-container">
+  <div class="jumbotron mt-3">
+    <h1 class="display-4">Welcome {{user.firstName}}</h1>
+    <p>Looking for something specific?</p>
+    <form action='/recipes/search' method='post' class="form my-2 my-lg-0 search-form">
+      <input class="form-control mr-3 search" name='query' type="text" placeholder="Search my recipes...">
+      <button class="btn btn-primary btn-search" type="submit">Search</button>
+    </form>
+  </div>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each recipes}}
+        <tr>
+            <td><a href="/recipes/show/{{id}}">{{title}}</a></td>
+            <td>{{date}}</td>
+            <td class='edit-delete'>
+                <a class='btn mx-3 edit-btn' href="/recipes/edit/{{id}}"><i class="fa fa-pencil"></i> Edit</a> 
+                <form action="/recipes/{{id}}" method='post' class="delete-form">
+                    <button type='submit' class="btn del-btn mx-3"><i class="fa fa-remove"></i> Delete</button>
+                </form>
+            </td>
+        </tr>
+      {{/each}}
+  </tbody>
+</table>
+</div>
+

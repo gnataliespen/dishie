@@ -11,7 +11,7 @@ const RecipeSchema = new Schema({
       ref: "ingredient",
     },
   ],
-  instructions: { type: Array, required: true },
+  instructions: { type: Array, trim: true, required: true },
   prepTime: { type: String, trim: true },
   cookTime: { type: String, trim: true },
   total: { type: String, trim: true },

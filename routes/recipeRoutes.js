@@ -6,6 +6,12 @@ const authHelpers = require("../helpers/auth");
 router.get("/", controller.allRecipes);
 router.get("/show/:id", controller.showRecipe);
 router.get("/new", authHelpers.ensureAuthentication, controller.newRecipePage);
-router.post("/", controller.newRecipePost);
+router.post("/", authHelpers.ensureAuthentication, controller.newRecipePost);
+router.get(
+  "/edit/:id",
+  authHelpers.ensureAuthentication,
+  controller.editRecipePage,
+);
+router.put("/:id", controller.editRecipe);
 
 module.exports = router;
