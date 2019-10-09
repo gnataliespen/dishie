@@ -1,6 +1,5 @@
 const recipes = require("../db/models/recipeModel");
 const inputHelpers = require("../helpers/input");
-const trunk = require("../helpers/truncate");
 
 exports.allRecipes = async (req, res) => {
   let allRec = await recipes.find();

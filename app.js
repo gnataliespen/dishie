@@ -16,15 +16,23 @@ const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
+//handlebars helpers
+const hbsHelpers = require("./helpers/hbs");
+
 //handlebars setup
-app.engine("handlebars", exphbs());
+app.engine(
+  "handlebars",
+  exphbs({
+    helpers: {
+      truncate: hbsHelpers.trunk,
+    },
+  }),
+);
 app.set("view engine", "handlebars");
 app.use(express.static(__dirname + "/public"));
 
 //bodyparser set up
 const parser = app.use(bodyParser.urlencoded({ extended: true }));
-
-//app.use(cookieParser());
 
 //Express Session Middleware
 app.use(
