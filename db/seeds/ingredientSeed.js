@@ -86,8 +86,12 @@ const ingSeeder = async () => {
   let errs = [];
   try {
     await ingredients.deleteMany();
-    await ingredients.create(results);
-    console.log("sucess");
+    for (let ing of results) {
+      let existing = await ingredients.find({ raw: ing.raw });
+      if (existing.length === 0) {
+        await ingredients.create(ing);
+      }
+    }
   } catch (err) {
     console.log(err);
   }

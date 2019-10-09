@@ -20,6 +20,12 @@ const UserSchema = new Schema({
   image: {
     type: String,
   },
+  myRecipes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "recipes",
+    },
+  ],
 });
 
 module.exports = mongoose.model("users", UserSchema);

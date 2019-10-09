@@ -17,6 +17,7 @@ const formatter = async recArr => {
       });
       recProper.ingredients.push(ingProper);
     }
+
     for (let stepObj of recipe.instructions) {
       recProper.instructions.push(stepObj.step);
     }
@@ -29,13 +30,44 @@ const formatter = async recArr => {
 };
 
 const recSeeder = async rec => {
+  errs = [];
   try {
     await recipes.deleteMany();
-    await recipes.create(rec);
-    console.log("suceess");
+    for (let single of rec) {
+      for (let ingred of single.ingredients) {
+        if (ingred === null) {
+          errs.push(single);
+        }
+      }
+      if (!errs.includes(single)) {
+        await recipes.create(single);
+      }
+    }
+    console.log("---------------------");
+    console.log(errs);
   } catch (err) {
     console.log(err);
   }
 };
 
 formatter(seedData.recipes);
+
+/*
+const test = async () => {
+  try {
+    let r = await recipes.find();
+    for (let s of r) {
+      await recipes
+        .findOne({ _id: s.id })
+        .populate("ingredients")
+        .exec((err, rec) => {
+          console.log(console.log(rec));
+        })
+        .save();
+    }
+  } catch (e) {
+    console.log(e);
+  }
+};
+test();
+*/
