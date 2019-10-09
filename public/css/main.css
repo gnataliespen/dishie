@@ -189,6 +189,9 @@ a.article:hover {
   color: #ffc0d0;
   background-color: black;
 }
+.your-rec {
+  align-self: flex-start;
+}
 
 @media (max-width: 850px) {
   #sidebar {

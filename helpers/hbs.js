@@ -1,6 +1,6 @@
-exports.trunk = str => {
-  if (str.length > 100) {
-    let newStr = str.substr(0, 100);
+exports.trunk = (str, len) => {
+  if (str.length > len) {
+    let newStr = str.substr(0, len);
     newStr += "...";
     return newStr;
   }

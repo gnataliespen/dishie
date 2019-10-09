@@ -7,6 +7,7 @@
       <button class="btn btn-primary btn-search" type="submit">Search</button>
     </form>
   </div>
+  <h2 class="your-rec my-3">Your Recipes</h2>
   <table class="table">
   <thead>
     <tr>
@@ -22,7 +23,7 @@
             <td>{{date}}</td>
             <td class='edit-delete'>
                 <a class='btn mx-3 edit-btn' href="/recipes/edit/{{id}}"><i class="fa fa-pencil"></i> Edit</a> 
-                <form action="/recipes/{{id}}" method='post' class="delete-form">
+                <form action="/recipes/{{id}}?_method=delete" method='post' class="delete-form">
                     <button type='submit' class="btn del-btn mx-3"><i class="fa fa-remove"></i> Delete</button>
                 </form>
             </td>

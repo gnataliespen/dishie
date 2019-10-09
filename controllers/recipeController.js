@@ -76,3 +76,11 @@ exports.editRecipe = async (req, res) => {
       console.log(err);
     });
 };
+
+exports.deleteRecipe = (req, res) => {
+  recipes
+    .findOneAndRemove({ _id: req.params.id }, { useFindAndModify: false })
+    .then(() => {
+      res.redirect("/");
+    });
+};

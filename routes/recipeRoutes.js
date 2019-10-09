@@ -12,6 +12,11 @@ router.get(
   authHelpers.ensureAuthentication,
   controller.editRecipePage,
 );
-router.put("/:id", controller.editRecipe);
+router.put("/:id", authHelpers.ensureAuthentication, controller.editRecipe);
+router.delete(
+  "/:id",
+  authHelpers.ensureAuthentication,
+  controller.deleteRecipe,
+);
 
 module.exports = router;
