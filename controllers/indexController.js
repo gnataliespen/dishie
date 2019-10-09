@@ -2,7 +2,7 @@ const recipes = require("../db/models/recipeModel");
 const users = require("../db/models/userModel");
 
 exports.about = (req, res) => {
-  res.send("about");
+  res.render("index/about");
 };
 
 exports.home = async (req, res) => {
@@ -12,5 +12,8 @@ exports.home = async (req, res) => {
 
 exports.dash = async (req, res) => {
   let user = await users.findOne({ _id: req.user.id }).populate("myRecipes");
-  res.render("index/dash", { recipes: user.myRecipes });
+  let userPosts = await recipes
+    .find({ author: req.user.id })
+    .populate("ingredients");
+  res.render("index/dash", { myRecipes: user.myRecipes, posts: userPosts });
 };

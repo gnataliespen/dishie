@@ -2,7 +2,7 @@
   <div class="jumbotron mt-3">
     <h1 class="display-4">Welcome {{user.firstName}}</h1>
   </div>
-  <h2 class="your-rec my-3">Your Recipes</h2>
+  <h2 class="your-rec my-5">Your Recipes</h2>
   <table class="table">
   <thead>
     <tr>
@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-      {{#each recipes}}
+      {{#each posts}}
         <tr>
             <td><a href="/recipes/show/{{id}}">{{title}}</a></td>
             <td>{{date}}</td>
@@ -26,5 +26,28 @@
       {{/each}}
   </tbody>
 </table>
+<h2 class="your-rec my-5">Saved Recipes</h2>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each myRecipes}}
+        <tr>
+            <td><a href="/recipes/show/{{id}}">{{title}}</a></td>
+            <td>{{date}}</td>
+            <td class='edit-delete'>
+                <form action="/recipes/{{id}}?_method=delete" method='post' class="delete-form">
+                    <button type='submit' class="btn del-btn mx-3"><i class="fa fa-remove"></i> Delete</button>
+                </form>
+            </td>
+        </tr>
+      {{/each}}
+  </tbody>
+</table>
 </div>
-
+  

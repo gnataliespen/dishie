@@ -12,6 +12,34 @@
     <title>bootstrap 4 sidebar</title>
   </head>
   <body>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/recipes">Recipes</a>
+    </li>
+    {{#if user}}
+    <li class="nav-item">
+      <a class="nav-link" href="/recipes/new">New</a>
+    </li>
+    {{/if}}
+    <li class="nav-item">
+      <a class="nav-link" href="/about">About</a>
+    </li>
+    {{#if user}}
+    <li class="nav-item">
+      <a class="nav-link" href="/auth/logout">Log Out</a>
+    </li>
+    {{else}}
+    <li class="nav-item">
+      <a class="nav-link" href="/auth/google"><i class="fa fa-google-plus-square"></i> Log In</a>
+    </li>
+    {{/if}}
+    <li class="nav-item nav-logo">
+      <a class="nav-link active" href="/">Dishie</a>
+    </li>
+  </ul>
    
     <div class="wrapper">
     	<nav id="sidebar">
