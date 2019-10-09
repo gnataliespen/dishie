@@ -67,6 +67,7 @@ body {
   justify-content: space-around;
   width: 10vw;
   margin-right: 5vw;
+  margin-top: 10px;
 }
 p {
   font-size: 2rem;
