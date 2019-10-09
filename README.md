@@ -30,4 +30,3 @@ Currently dishie is just for finding recipes, but in the future you will also be
 ## Contributing
 Dishie is still in beta so if you notice something wrong, please open up an issue on the repo. 
 
-Please make sure to update tests as appropriate.
