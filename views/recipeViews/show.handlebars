@@ -19,16 +19,16 @@
   <img src="{{img}}" alt="{{title}}" class='rec-pic'>
   <div class="rec-body">
     <div class="ingredients">
-      <h3>Ingredients:</h3>
-      <ul>
+      <h3 class='h3-ingred'>Ingredients:</h3>
+      <ul class="ul-ingred">
       {{#each ingredients}}
         <li>{{this.raw}}</li>
       {{/each}}
       </ul>
     </div>
     <div class="instructions">
-      <h3>Directions:</h3>
-      <ol>
+      <h3 class="h3-ins">Directions:</h3>
+      <ol class="ol-ins">
       {{#each instructions}}
         <li>{{this}}</li>
       {{/each}}
@@ -37,7 +37,7 @@
   </div>
   {{/with}}
   <div class="comments-header my-5">
-    <h4>Comments:</h4>
+    <h3 class="h3-comm">Comments:</h4>
   </div>
   {{#each rec.comments}}
     <div class="media comment-card mb-3">
