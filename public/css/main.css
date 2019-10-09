@@ -218,6 +218,8 @@ a.article:hover {
 .btn-save {
   height: 3rem;
   width: 8rem;
+  padding-top: 10px;
+  text-align: center;
 }
 @media (max-width: 850px) {
   #sidebar {

@@ -123,3 +123,14 @@ exports.saveRecipe = async (req, res) => {
   );
   res.redirect("/");
 };
+
+exports.search = (req, res) => {
+  recipes
+    .find({ $text: { $search: req.body.query } })
+    .then(recipe => {
+      res.render("recipeViews/all", { recipes: recipe });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};

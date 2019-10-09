@@ -33,5 +33,5 @@ const RecipeSchema = new Schema({
   },
   date: { type: Date, default: Date.now() },
 });
-
+RecipeSchema.indexes({ "$**": "text" });
 module.exports = mongoose.model("recipes", RecipeSchema);

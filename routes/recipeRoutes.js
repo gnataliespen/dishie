@@ -22,4 +22,6 @@ router.delete(
 router.post("/comment/:id", controller.comment);
 router.get("/show/save/:id", controller.saveRecipe);
 
+router.post("/search", controller.search);
+
 module.exports = router;
