@@ -66,8 +66,6 @@ body {
   flex-direction: column;
   justify-content: space-around;
   width: 10vw;
-  margin-right: 5vw;
-  margin-top: 10px;
 }
 p {
   font-size: 2rem;
@@ -261,7 +259,7 @@ a.article:hover {
   justify-content: center;
 }
 .nav {
-  background-color: #fff6f6;
+  background-color: #ffc0d0;
   font-size: 3rem;
 }
 .nav-logo {
