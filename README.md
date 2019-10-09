@@ -8,19 +8,24 @@ Dishie is a web application for adding, sharing, and managing recipes and recipe
 Dishie is built in NodeJS and Express, and uses a MongoDB database.
 
 ## Some key features:
-Users can Log in with google.
-Users can comment on and save recipes they like
-Users can post there own recipes and Dishie will format the ingredients data to be easily manipulated.
+<ul>
+  <li>Users can Log in with google.</li>
+  <li>Users can comment on and save recipes they like</li>  
+  <li>Users can post there own recipes and Dishie will format the ingredients data to be easily manipulated.
+</li>  
+</ul>
+
 
 ## Usage
 Currently dishie is just for finding recipes, but in the future you will also be able to meal plan, and build a grocery list on the site.
 
 ## Roadmap
-Improve UI by making the application 'lighter'.
-Add grocery list
-improve error handling
-Add Meal 
-Improve user experience for adding ingredients to recipes.
+<ol>
+  <li>improve error handling</li>
+  <li>Add grocery list</li>  
+  <li>Improve UI by making the application 'lighter'.</li>  
+  <li>Add meal planner</li>
+</ol>
 
 ## Contributing
 Dishie is still in beta so if you notice something wrong, please open up an issue on the repo. 
