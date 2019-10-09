@@ -33,5 +33,6 @@ const RecipeSchema = new Schema({
   },
   date: { type: Date, default: Date.now() },
 });
+//Set text input for search
 RecipeSchema.indexes({ "$**": "text" });
 module.exports = mongoose.model("recipes", RecipeSchema);

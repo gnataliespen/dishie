@@ -1,4 +1,3 @@
-//Load modules
 const express = require("express");
 const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
@@ -34,6 +33,8 @@ app.engine(
   }),
 );
 app.set("view engine", "handlebars");
+
+//CSS & JS
 app.use(express.static(__dirname + "/public"));
 
 //Express Session Middleware

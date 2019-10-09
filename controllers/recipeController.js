@@ -2,11 +2,13 @@ const recipes = require("../db/models/recipeModel");
 const inputHelpers = require("../helpers/input");
 const users = require("../db/models/userModel");
 
+// /recipes route handler
 exports.allRecipes = async (req, res) => {
   let allRec = await recipes.find();
   res.render("recipeViews/all", { recipes: allRec });
 };
 
+//Show single recipe handler
 exports.showRecipe = async (req, res) => {
   try {
     let recipe = await recipes
@@ -21,13 +23,17 @@ exports.showRecipe = async (req, res) => {
   }
 };
 
+//New Recipe form route handler
 exports.newRecipePage = (req, res) => {
   res.render("recipeViews/new");
 };
 
+//New Recipe POST handler
 exports.newRecipePost = async (req, res) => {
   try {
+    //Sends ingredients off for formatting
     let ingObjArr = await inputHelpers.ingListFormatter(req.body.ingredients);
+
     const newRecipe = {
       title: req.body.title,
       description: req.body.description,
@@ -42,22 +48,17 @@ exports.newRecipePost = async (req, res) => {
     };
     let newRecObj = await recipes.create(newRecipe);
     res.redirect(`/recipes/show/${newRecObj._id}`);
-    await users.findByIdAndUpdate(
-      req.user.id,
-      {
-        $push: { myRecipes: newRecObj },
-      },
-      { useFindAndModify: false },
-    );
   } catch (err) {
     console.log(err);
   }
 };
 
+//Edit page route handler
 exports.editRecipePage = async (req, res) => {
   let recipe = await recipes
     .findOne({ _id: req.params.id })
     .populate("ingredients");
+  //only author can edit
   if (recipe.author == req.user.id) {
     res.render("recipeViews/edit", { recipe: recipe });
   } else {
@@ -65,6 +66,7 @@ exports.editRecipePage = async (req, res) => {
   }
 };
 
+//PUT handler
 exports.editRecipe = async (req, res) => {
   let ingObjArr = await inputHelpers.ingListFormatter(req.body.ingredients);
   let updated = req.body;
@@ -82,7 +84,9 @@ exports.editRecipe = async (req, res) => {
     });
 };
 
+//Delete route handler
 exports.deleteRecipe = async (req, res) => {
+  //if theyre the author delete the recipe
   if (req.params.id == req.user.id) {
     recipes
       .findOneAndRemove({ _id: req.params.id }, { useFindAndModify: false })
@@ -90,12 +94,14 @@ exports.deleteRecipe = async (req, res) => {
         res.redirect("/");
       });
   } else {
+    //Otherwise just remove it from there saved recipes
     let user = await users.findOne({ _id: req.user.id });
     await user.myRecipes.pull(req.params.id);
     await user.save();
     res.redirect("/");
   }
 };
+//Comment POST handler
 exports.comment = async (req, res) => {
   let recipe = await recipes.findOne({ _id: req.params.id });
   let newComment = {
@@ -112,6 +118,7 @@ exports.comment = async (req, res) => {
   res.redirect(`/recipes/show/${recipe.id}`);
 };
 
+//Add to my recipes route handler
 exports.saveRecipe = async (req, res) => {
   let recipe = await recipes.findOne({ _id: req.params.id });
   await users.findByIdAndUpdate(
@@ -124,6 +131,7 @@ exports.saveRecipe = async (req, res) => {
   res.redirect("/");
 };
 
+//Search handler
 exports.search = (req, res) => {
   recipes
     .find({ $text: { $search: req.body.query } })

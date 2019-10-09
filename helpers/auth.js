@@ -1,5 +1,6 @@
 let recipes = require("../db/models/recipeModel.js");
 
+// / routes guests to welcome and users to dashboard
 exports.ensureAuthentication = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();

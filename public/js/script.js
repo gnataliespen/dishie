@@ -5,6 +5,7 @@ const ingInput = document.querySelector(".ing-input");
 let insI = 1;
 let ingI = 1;
 
+//Creates the expanding ingredient and instructin forms
 const addItem = id => {
   const li = document.createElement("li");
   if (id === "ins") {

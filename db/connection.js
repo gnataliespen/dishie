@@ -5,7 +5,7 @@ const keys = require("../config/keys");
 mongoose.Promise = global.Promise;
 //Mongoose Connect
 mongoose
-  .connect("mongodb://localhost/recipeDB", {
+  .connect(keys.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
