@@ -20,5 +20,6 @@ router.delete(
 );
 
 router.post("/comment/:id", controller.comment);
+router.get("/show/save/:id", controller.saveRecipe);
 
 module.exports = router;

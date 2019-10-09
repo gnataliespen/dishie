@@ -1,8 +1,16 @@
-{{#with rec}}
 <div class="rec-container">
   <div class="jumbotron mt-3">
-    <h1 class="display-4">{{title}}</h1>
-    <p>Posted by: {{author.firstName}} {{author.lastName}}</p>
+    <div class="jum-head ">
+      
+      <h1 class="display-4">{{rec.title}}</h1>
+      {{#if user}}
+      <a href='save/{{rec.id}}' class="btn-primary btn-save mt-3">Save Recipe</a>
+      {{/if}}
+    </div>
+    {{#with rec}}
+    {{#if author}}
+      <p>Posted by: {{author.firstName}} {{author.lastName}}</p>
+    {{/if}}
     <p>Prep Time: {{prepTime}} | Cook Time: {{cookTime}} | Yield: {{yield}} | Total: {{total}}</p>
   </div>
   <div class="description">

@@ -211,7 +211,14 @@ a.article:hover {
   width: 100%;
   border-bottom: 1px solid #9999;
 }
-
+.jum-head {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-save {
+  height: 3rem;
+  width: 8rem;
+}
 @media (max-width: 850px) {
   #sidebar {
     display: none;

@@ -42,9 +42,13 @@ exports.newRecipePost = async (req, res) => {
     };
     let newRecObj = await recipes.create(newRecipe);
     res.redirect(`/recipes/show/${newRecObj._id}`);
-    await users.findByIdAndUpdate(req.user.id, {
-      $push: { myRecipes: newRecObj },
-    });
+    await users.findByIdAndUpdate(
+      req.user.id,
+      {
+        $push: { myRecipes: newRecObj },
+      },
+      { useFindAndModify: false },
+    );
   } catch (err) {
     console.log(err);
   }
@@ -78,12 +82,19 @@ exports.editRecipe = async (req, res) => {
     });
 };
 
-exports.deleteRecipe = (req, res) => {
-  recipes
-    .findOneAndRemove({ _id: req.params.id }, { useFindAndModify: false })
-    .then(() => {
-      res.redirect("/");
-    });
+exports.deleteRecipe = async (req, res) => {
+  if (req.params.id == req.user.id) {
+    recipes
+      .findOneAndRemove({ _id: req.params.id }, { useFindAndModify: false })
+      .then(() => {
+        res.redirect("/");
+      });
+  } else {
+    let user = await users.findOne({ _id: req.user.id });
+    await user.myRecipes.pull(req.params.id);
+    await user.save();
+    res.redirect("/");
+  }
 };
 exports.comment = async (req, res) => {
   let recipe = await recipes.findOne({ _id: req.params.id });
@@ -91,8 +102,24 @@ exports.comment = async (req, res) => {
     commentBody: req.body.commentBody,
     commentUser: req.user.id,
   };
-  await recipes.findByIdAndUpdate(recipe.id, {
-    $push: { comments: newComment },
-  });
+  await recipes.findByIdAndUpdate(
+    recipe.id,
+    {
+      $push: { comments: newComment },
+    },
+    { useFindAndModify: false },
+  );
   res.redirect(`/recipes/show/${recipe.id}`);
+};
+
+exports.saveRecipe = async (req, res) => {
+  let recipe = await recipes.findOne({ _id: req.params.id });
+  await users.findByIdAndUpdate(
+    req.user.id,
+    {
+      $push: { myRecipes: recipe },
+    },
+    { useFindAndModify: false },
+  );
+  res.redirect("/");
 };
