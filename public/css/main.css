@@ -9,7 +9,7 @@ body {
   width: 100%;
   font-family: "DM Serif Display", serif;
 }
-.card {
+.rec-card {
   width: 20rem;
   height: 30rem;
   border-radius: 4px;
@@ -107,6 +107,9 @@ a:focus {
 #sidebar .sidebar-header {
   padding: 20px;
 }
+.sidebar-header > h3 {
+  font-size: 2.5rem;
+}
 #sidebar ul.components {
   padding: 20px 0px;
   color: #ffc0d0;
@@ -115,7 +118,7 @@ a:focus {
 
 #sidebar ul li a {
   padding: 10px;
-  font-size: 1.1em;
+  font-size: 1.5rem;
   display: block;
 }
 #sidebar ul li a:hover {
@@ -191,6 +194,22 @@ a.article:hover {
 }
 .your-rec {
   align-self: flex-start;
+}
+.comments-header {
+  width: 100%;
+  border-bottom: 1px solid #9999;
+}
+.card-comments {
+  width: 100%;
+  background-color: #fff6f6;
+}
+.comment-img {
+  height: 64px;
+  width: 64px;
+}
+.comment-card {
+  width: 100%;
+  border-bottom: 1px solid #9999;
 }
 
 @media (max-width: 850px) {

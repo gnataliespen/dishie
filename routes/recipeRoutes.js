@@ -19,4 +19,6 @@ router.delete(
   controller.deleteRecipe,
 );
 
+router.post("/comment/:id", controller.comment);
+
 module.exports = router;

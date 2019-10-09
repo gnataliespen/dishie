@@ -10,9 +10,10 @@ exports.allRecipes = async (req, res) => {
 exports.showRecipe = async (req, res) => {
   try {
     let recipe = await recipes
-      .find({ _id: req.params.id })
+      .findOne({ _id: req.params.id })
       .populate("ingredients")
-      .populate("author");
+      .populate("author")
+      .populate("comments.commentUser");
     res.render("recipeViews/show", { rec: recipe });
   } catch (err) {
     console.log(err);
@@ -83,4 +84,15 @@ exports.deleteRecipe = (req, res) => {
     .then(() => {
       res.redirect("/");
     });
+};
+exports.comment = async (req, res) => {
+  let recipe = await recipes.findOne({ _id: req.params.id });
+  let newComment = {
+    commentBody: req.body.commentBody,
+    commentUser: req.user.id,
+  };
+  await recipes.findByIdAndUpdate(recipe.id, {
+    $push: { comments: newComment },
+  });
+  res.redirect(`/recipes/show/${recipe.id}`);
 };

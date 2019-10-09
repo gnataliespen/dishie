@@ -17,24 +17,21 @@ const RecipeSchema = new Schema({
   total: { type: String, trim: true },
   yield: { type: String, trim: true },
   tags: [String],
-  author: {
-    type: Schema.Types.ObjectId,
-    ref: "users",
-  },
-  date: { type: Date, default: Date.now() },
-  reviews: [
+  comments: [
     {
-      reviewBody: {
-        type: String,
-        required: true,
-      },
-      reviewDate: { type: Date, default: Date.now() },
-      reviewUser: {
+      commentBody: { type: Array, trim: true, required: true },
+      commentDate: { type: Date, default: Date.now() },
+      commentUser: {
         type: Schema.Types.ObjectId,
         ref: "users",
       },
     },
   ],
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "users",
+  },
+  date: { type: Date, default: Date.now() },
 });
 
 module.exports = mongoose.model("recipes", RecipeSchema);

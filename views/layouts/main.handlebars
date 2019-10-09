@@ -29,16 +29,22 @@
                     <a href="/about">About</a>
                 </li>
    		    	<li>
-   				    <a href="/auth/google"><i class="fa fa-google-plus-square"></i> Log In with Google</a>
+               {{#if user}}
+   				        <a href="/auth/logout">Log Out</a>
+               {{else}}
+   				        <a href="/auth/google"><i class="fa fa-google-plus-square"></i> Log In with Google</a>
+               {{/if}}
    			    </li>
    		    </ul>
    	  </nav>
       <div class='content'>
    	    {{{body}}}
       </div>
-      <a href="/recipes/new" class="float">
-          <i class="fa fa-plus my-float"></i>
-      </a>
+      {{#if user}}
+        <a href="/recipes/new" class="float">
+            <i class="fa fa-plus my-float"></i>
+        </a>
+      {{/if}}
     </div>
     <script src='/js/script.js'></script>
   </body>

@@ -1,4 +1,4 @@
-{{#each rec}}
+{{#with rec}}
 <div class="rec-container">
   <div class="jumbotron mt-3">
     <h1 class="display-4">{{title}}</h1>
@@ -27,6 +27,32 @@
       </ol>
     </div>
   </div>
+  {{/with}}
+  <div class="comments-header my-5">
+    <h4>Comments:</h4>
+  </div>
+  {{#each rec.comments}}
+    <div class="media comment-card mb-3">
+      <img src="{{commentUser.img}}" class="mr-3 comment-img" alt="profile pic">
+      <div class="media-body">
+        <h5 class="mt-0">{{commentUser.firstName}} {{commentUser.lastName}} says:</h5>
+        <p>{{commentBody}}</p>
+      </div>
+    </div>
+  {{/each}}
+  <div class="card card-comments my-5">
+    <div class="card-body">
+      <h4>Add Comment</h4>
+      {{#if user}}
+        <form method='post' action="/recipes/comment/{{rec.id}}">
+          <textarea class="form-control my-3" placeholder='What did you think about the recipe?' name="commentBody" rows='3' required></textarea>
+          <button type='submit' class="btn-primary">Submit</button>
+        </form>
+      {{else}}
+        <p> Please log in to comment</p>
+      {{/if}}
+    </div>
+  </div>
 </div>
-{{/each}}
+
 

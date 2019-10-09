@@ -18,7 +18,7 @@ module.exports = passport => {
           firstName: profile.name.givenName,
           lastName: profile.name.familyName,
           email: profile.emails[0].value,
-          image: profile.image,
+          img: profile.photos[0].value,
         };
 
         //Check for existing user
