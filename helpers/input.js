@@ -1,4 +1,5 @@
 const fetch = require("node-fetch");
+const keys = require("./keys");
 const ingredients = require("../db/models/ingredientModel.js");
 
 exports.ingListFormatter = async ingListRaw => {
@@ -23,15 +24,14 @@ const apiReq = async ingArr => {
         method: "POST",
         headers: {
           "x-rapidapi-host": "zestful.p.rapidapi.com",
-          "x-rapidapi-key":
-            "28e31d6f4amsh1bb6e0e85658709p1f02aejsndb69715df850",
+          "x-rapidapi-key": keys.zestfulKey,
           "content-type": "application/json",
-          accept: "application/json",
+          accept: "application/json"
         },
         body: JSON.stringify({
-          ingredients: ingArr,
-        }),
-      },
+          ingredients: ingArr
+        })
+      }
     );
     //Response needs to be formatted further
     ingDataProper = await resFormatter(response);
